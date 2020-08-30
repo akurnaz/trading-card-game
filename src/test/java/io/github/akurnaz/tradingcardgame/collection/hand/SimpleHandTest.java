@@ -2,6 +2,7 @@ package io.github.akurnaz.tradingcardgame.collection.hand;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Random;
@@ -37,13 +38,24 @@ class SimpleHandTest {
 	}
 
 	@Test
-	void draw_givenNotEmptyHand_thenReturnEqualsCard() {
+	void draw_givenNotEmptyHand_thenReturnEqualsCard() throws IncorrectRangeException {
 		// given
 		Card card = new Card(3);
 		hand.insert(card);
 
 		// then
 		assertEquals(card, hand.draw(0));
+	}
+
+	@Test
+	void draw_givenIndexOutOfRange_thenThrowIncorrectRangeException() {
+		// given
+		Card card = new Card(3);
+		hand.insert(card);
+
+		// then
+		assertThrows(IncorrectRangeException.class, () -> hand.draw(2));
+		assertThrows(IncorrectRangeException.class, () -> hand.draw(-1));
 	}
 
 	@Test

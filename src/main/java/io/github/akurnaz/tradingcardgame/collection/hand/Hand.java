@@ -6,6 +6,6 @@ public interface Hand {
 
 	boolean insert(Card card);
 
-	Card draw(int index);
+	Card draw(int index) throws IncorrectRangeException;
 
 }

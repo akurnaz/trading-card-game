@@ -24,7 +24,10 @@ public class SimpleHand implements Hand {
 	}
 
 	@Override
-	public Card draw(int index) {
+	public Card draw(int index) throws IncorrectRangeException {
+		if (index < 0 || index >= cards.size()) {
+			throw new IncorrectRangeException("Index out of bounds.");
+		}
 		return cards.remove(index);
 	}
 

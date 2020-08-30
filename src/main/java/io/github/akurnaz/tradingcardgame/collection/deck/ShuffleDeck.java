@@ -27,7 +27,7 @@ public class ShuffleDeck implements Deck {
 	}
 
 	@Override
-	public long size() {
+	public int size() {
 		return cards.size();
 	}
 

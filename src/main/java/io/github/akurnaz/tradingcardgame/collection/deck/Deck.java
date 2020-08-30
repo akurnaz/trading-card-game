@@ -6,6 +6,6 @@ public interface Deck {
 
 	Card draw() throws EmptyDeckException;
 
-	long size();
+	int size();
 
 }

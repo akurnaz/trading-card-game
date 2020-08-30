@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 class ShuffleDeckTest {
 
 	@Test
-	void draw_givenNotEmptyInitalDeck_thenReturnNotNull() throws EmptyDeckException {
+	void draw_givenNotEmptyDeck_thenReturnNotNull() throws EmptyDeckException {
 		// given
 		int[] initialDeck = { 0, 0, 1, 2, 3, 3, 3 };
 		Deck deck = new ShuffleDeck(initialDeck);
@@ -19,7 +19,7 @@ class ShuffleDeckTest {
 	}
 
 	@Test
-	void draw_givenEmptyInitalDeck_thenThrowEmptyDeckException() {
+	void draw_givenEmptyDeck_thenThrowEmptyDeckException() {
 		// given
 		int[] initialDeck = {};
 		Deck deck = new ShuffleDeck(initialDeck);
@@ -29,7 +29,7 @@ class ShuffleDeckTest {
 	}
 
 	@Test
-	void size_givenSomeInitalDec_thenReturnEqualSize() {
+	void size_givenNotEmptyDeck_thenReturnEqualSize() {
 		// given
 		int[] initialDeck = { 0, 0, 1, 2, 3, 3, 3 };
 		Deck deck = new ShuffleDeck(initialDeck);
@@ -39,16 +39,24 @@ class ShuffleDeckTest {
 	}
 
 	@Test
-	void size_givenNotEmptyInitalDeck_whenCallDeck_thenReturnOneLessSize() throws EmptyDeckException {
+	void size_givenDrawedDeck_thenReturnOneLessSize() throws EmptyDeckException {
 		// given
 		int[] initialDeck = { 0, 0, 1, 2, 3, 3, 3 };
 		Deck deck = new ShuffleDeck(initialDeck);
-
-		// when
 		deck.draw();
 
 		// then
 		assertEquals(initialDeck.length - 1, deck.size());
+	}
+
+	@Test
+	void toString_givenNotEmptyHand_thenReturnEquals() {
+		// given
+		int[] initialDeck = { 0 };
+		Deck deck = new ShuffleDeck(initialDeck);
+
+		// then
+		assertEquals("[0]", deck.toString());
 	}
 
 }

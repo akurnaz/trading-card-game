@@ -45,8 +45,7 @@ class ComputerPlayerTest {
 
 		// then
 		assertDoesNotThrow(() -> playable.play(activeConsoleCommand, mana, cardsInHand));
-		assertDoesNotThrow(
-				() -> Mockito.verify(activeConsoleCommand, Mockito.times(1)).insertToTable(eq(expectedIndex)));
+		assertDoesNotThrow(() -> Mockito.verify(activeConsoleCommand).insertToTable(eq(expectedIndex)));
 	}
 
 	@Test

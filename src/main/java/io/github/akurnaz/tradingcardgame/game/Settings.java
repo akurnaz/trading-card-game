@@ -2,12 +2,14 @@ package io.github.akurnaz.tradingcardgame.game;
 
 public class Settings {
 	private int initialHealth;
+	private int initialMana;
 	private int maxMana;
 	private int[] initialDeck;
 	private int maxCardInHand;
 
 	public Settings(SettingsBuilder builder) {
 		this.initialHealth = builder.initialHealth;
+		this.initialMana = builder.initialMana;
 		this.maxMana = builder.maxMana;
 		this.initialDeck = builder.initialDeck;
 		this.maxCardInHand = builder.maxCardInHand;
@@ -15,6 +17,10 @@ public class Settings {
 
 	public int getInitialHealth() {
 		return initialHealth;
+	}
+
+	public int getInitialMana() {
+		return initialMana;
 	}
 
 	public int getMaxMana() {
@@ -35,12 +41,18 @@ public class Settings {
 
 	public static class SettingsBuilder {
 		private int initialHealth = 30;
+		private int initialMana = 0;
 		private int maxMana = 10;
 		private int[] initialDeck = {};
 		private int maxCardInHand = 5;
 
 		public SettingsBuilder initialHealth(int initialHealth) {
 			this.initialHealth = initialHealth;
+			return this;
+		}
+
+		public SettingsBuilder initialMana(int initialMana) {
+			this.initialMana = initialMana;
 			return this;
 		}
 

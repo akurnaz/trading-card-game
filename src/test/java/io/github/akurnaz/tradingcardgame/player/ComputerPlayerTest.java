@@ -71,7 +71,7 @@ class ComputerPlayerTest {
 	@Test
 	void getName_givenName_thenReturnEqualsName() {
 		// given
-		String expectedName = "Computer";
+		String expectedName = "Computer1";
 
 		// then
 		assertEquals(expectedName, playable.getName());

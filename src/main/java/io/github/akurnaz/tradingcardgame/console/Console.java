@@ -67,7 +67,7 @@ public class Console implements ActiveConsoleCommand, OpponentConsoleCommand {
 	}
 
 	@Override
-	public void insertToTable(int index) throws InsufficientManaException, IncorrectRangeException {
+	public int insertToTable(int index) throws InsufficientManaException, IncorrectRangeException {
 		Card card = hand.draw(index);
 		int remainingMana = mana - card.getMana();
 		if (remainingMana < 0) {
@@ -78,6 +78,7 @@ public class Console implements ActiveConsoleCommand, OpponentConsoleCommand {
 		table.insert(card);
 
 		opponentConsoleCommand.damage(card.getMana());
+		return mana;
 	}
 
 	@Override

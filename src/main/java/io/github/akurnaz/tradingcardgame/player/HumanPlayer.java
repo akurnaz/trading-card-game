@@ -25,7 +25,10 @@ public class HumanPlayer implements Playable {
 		int index = getChoice(activeConsoleCommand);
 		while (index != -1) {
 			try {
-				activeConsoleCommand.insertToTable(index);
+				int remainingMana = activeConsoleCommand.insertToTable(index);
+				if (remainingMana == 0) {
+					break;
+				}
 			} catch (InsufficientManaException | IncorrectRangeException e) {
 				output.accept(e.getMessage());
 			}

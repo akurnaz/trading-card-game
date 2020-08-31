@@ -1,6 +1,7 @@
 package io.github.akurnaz.tradingcardgame.collection.hand;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import io.github.akurnaz.tradingcardgame.collection.Card;
@@ -29,6 +30,11 @@ public class SimpleHand implements Hand {
 			throw new IncorrectRangeException("Index out of bounds.");
 		}
 		return cards.remove(index);
+	}
+
+	@Override
+	public List<Card> unmodifiableList() {
+		return Collections.unmodifiableList(cards);
 	}
 
 	@Override

@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.util.List;
 import java.util.Random;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -56,6 +57,17 @@ class SimpleHandTest {
 		// then
 		assertThrows(IncorrectRangeException.class, () -> hand.draw(2));
 		assertThrows(IncorrectRangeException.class, () -> hand.draw(-1));
+	}
+
+	@Test
+	void unmodifiableList_givenNotEmptyHand_thenThrowUnsupportedOperationException() {
+		// given
+		Card card = new Card(3);
+		hand.insert(card);
+
+		// then
+		List<Card> cards = hand.unmodifiableList();
+		assertThrows(UnsupportedOperationException.class, () -> cards.remove(0));
 	}
 
 	@Test
